@@ -1,8 +1,26 @@
 aid: bright-health
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bright-health.png
 name: Bright Health
-description: 'Bright Health is a company surfaced as a portfolio company of redpoint-ventures and added
-  to the API Evangelist network as a stub for enrichment. Sector: healthtech. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Bright Health Group was a Minneapolis-based healthtech and health-insurance company founded
+  in 2016 by former UnitedHealthcare CEO Bob Sheehy, offering individual, family, and Medicare Advantage
+  plans on the ACA exchanges through its Bright HealthCare brand. Backed by Redpoint Ventures and other
+  venture investors, the company went public in 2021, then exited the insurance business, rebranded to
+  NeueHealth in January 2024 to focus on value-based care delivery (NeueCare) and provider enablement
+  (NeueSolutions), and shut down all remaining Bright HealthCare health-plan operations effective
+  December 31, 2024. NeueHealth was subsequently taken private by New Enterprise Associates. Bright Health
+  never published a public developer program, API, or documentation surface; runout operations are handled
+  under the NeueHealth corporate brand.'
 url: https://raw.githubusercontent.com/api-evangelist/bright-health/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +30,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Healthtech
+- Health Insurance
+- Insurance
+- Medicare Advantage
+- ACA
+- Value-Based Care
+- Defunct Brand
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,5 +47,12 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/bright-health-domain-security.yml
 - type: Website
   url: http://www.brighthealthplan.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

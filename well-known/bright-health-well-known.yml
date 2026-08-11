@@ -1,0 +1,104 @@
+generated: '2026-08-10'
+method: probed
+source: live GET probes of /.well-known/* on every host named in apis.yml plus the successor host
+note: >-
+  Every path missed. brighthealthplan.com is a Webflow site with a catch-all that answers HTTP 200
+  with the same HTML shell for every unknown path, including every /.well-known/* path — those 200s
+  are soft-404s, not documents, and are recorded as misses. www.brighthealthplan.com 301s to
+  www.brighthealthcare.com, which returns 530 (dead origin). www.neuehealth.com, the successor host
+  operating the Bright HealthCare runout, returns real 404s ("Invalid .well-known request") for the
+  whole discovery surface. NO WellKnown or SecurityTxt pointer is emitted from this file — nothing
+  was served.
+hosts:
+- host: https://brighthealthplan.com
+  served_by: webflow
+  catch_all_200: true
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell, not RFC 9116 text
+  - path: /.well-known/openid-configuration
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell
+  - path: /.well-known/api-catalog
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell
+  - path: /.well-known/agent-card.json
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell — rejected, no agent card written
+  - path: /.well-known/agent.json
+    status: 200
+    served: false
+    content_type: text/html
+    reason: soft-404 HTML shell — rejected, no agent card written
+- host: https://www.brighthealthplan.com
+  served_by: redirect
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    served: false
+    reason: 301 to www.brighthealthcare.com, which answers 530 (dead origin)
+  - path: /.well-known/openid-configuration
+    status: 301
+    served: false
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    served: false
+  - path: /.well-known/api-catalog
+    status: 301
+    served: false
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    served: false
+- host: https://www.neuehealth.com
+  served_by: webflow
+  note: successor entity host; runs Bright HealthCare runout operations
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    served: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    served: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    served: false
+  - path: /.well-known/api-catalog
+    status: 404
+    served: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    served: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    served: false
+  - path: /.well-known/agent.json
+    status: 404
+    served: false
+summary:
+  paths_probed: 19
+  documents_served: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false

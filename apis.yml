@@ -30,7 +30,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-10'
 tags:
 - Company
 - Healthtech
@@ -50,9 +50,41 @@ common:
 - type: DomainSecurity
   url: security/bright-health-domain-security.yml
 - type: Website
-  url: http://www.brighthealthplan.com/
+  url: https://brighthealthplan.com/
+  note: >-
+    301s to https://www.neuehealth.com/bhc/brighthealthcare, the Bright HealthCare runout notice
+    on the successor entity's site. The former www.brighthealthplan.com host 301s to
+    www.brighthealthcare.com, which answers HTTP 530 (dead origin) — the previous pointer was
+    a broken chain.
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-10'
+  status: nochange
+  artifacts_added: 1
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Full contract discovery pass (STEP 0b) run against brighthealthplan.com, www.brighthealthplan.com,
+    brighthealthcare.com and the successor www.neuehealth.com. No OpenAPI, GraphQL, MCP, AsyncAPI,
+    agent card, llms.txt or /.well-known document served on any host. Domain-security probe refreshed;
+    a well-known probe index recording the absence was written with no pointer.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Bright HealthCare shut down all health-plan operations effective 2024-12-31 and brighthealthplan.com now
+    301s to a NeueHealth runout notice; the old www.brighthealthplan.com host 301s to
+    www.brighthealthcare.com, which returns HTTP 530 with no origin behind it, and the successor
+    NeueHealth site publishes no developer, API or interoperability page at all.
+  evidence:
+  - url: https://www.brighthealthplan.com/
+    status: 530
+  - url: https://brighthealthplan.com/
+    status: 200
+  - url: https://www.neuehealth.com/developers
+    status: 404
+  - url: https://www.neuehealth.com/interoperability
+    status: 404
+  - url: https://www.neuehealth.com/.well-known/api-catalog
+    status: 404
+  - url: https://api.github.com/orgs/brighthealth
+    status: 404
+  checked: '2026-08-10'

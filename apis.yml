@@ -33,6 +33,9 @@ description: 'Bright Health Group was a Minneapolis-based healthtech and health-
   never published a public developer program, API, or documentation surface; runout operations are handled
   under the NeueHealth corporate brand.'
 url: https://raw.githubusercontent.com/api-evangelist/bright-health/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "Bright Health never published a public developer program, API, or documentation surface; runout operations are handled under the NeueHealth corporate brand."
 x-type: company
 x-source: vc-portfolio
 x-backed-by:

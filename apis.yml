@@ -21,6 +21,8 @@ accessModel:
   source: []
   generated: '2026-07-22'
   method: derived
+  source:
+  - {url: 'https://brighthealthplan.com/', status: 301, note: 'declared website redirects to https://www.neuehealth.com/bhc/brighthealthcare — a different registrable domain (brighthealthplan.com -> neuehealth.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bright-health.png
 name: Bright Health
 description: 'Bright Health Group was a Minneapolis-based healthtech and health-insurance company founded
